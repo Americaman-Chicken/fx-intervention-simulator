@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import {
   AlertTriangle,
   Calculator,
+  Check,
+  Copy,
   Info,
   Plus,
   ShieldCheck,
@@ -215,6 +217,7 @@ export default function FxInterventionSimulator() {
   const [depositInput, setDepositInput] = useState("1000000");
   const [positions, setPositions] = useState([initialPosition]);
   const [hasCalculated, setHasCalculated] = useState(false);
+  const [copyStatus, setCopyStatus] = useState("idle");
 
   const dropRate = clamp(toFiniteNumber(dropRateInput), 0, MAX_DROP_RATE);
   const deposit = Math.max(toFiniteNumber(depositInput), 0);
@@ -343,6 +346,59 @@ export default function FxInterventionSimulator() {
 
   const handleRateBlur = () => {
     setDropRateInput(String(clamp(toFiniteNumber(dropRateInput), 0, MAX_DROP_RATE)));
+  };
+
+  const buildResultText = () => {
+    const profitLossLabel =
+      simulation.totalProfitLoss >= 0
+        ? `利益 ${formatYen(Math.abs(simulation.totalProfitLoss))}`
+        : `損失 ${formatYen(Math.abs(simulation.totalProfitLoss))}`;
+    const effectiveLeverageText =
+      simulation.effectiveLeverage === null ? "--" : `${formatNumber(simulation.effectiveLeverage, 2)}倍`;
+    const marginRatioText =
+      simulation.afterMarginRatio === null ? "--" : `${formatNumber(simulation.afterMarginRatio, 1)}%`;
+    const swapDaysText =
+      simulation.swapDays === null ? "--" : `約 ${formatNumber(simulation.swapDays, 1)}日分`;
+    const positionLines = simulation.rows
+      .map((row, index) => {
+        const side = row.side === "long" ? "ロング" : "ショート";
+        const rowProfitLoss =
+          row.profitLoss >= 0
+            ? `利益 ${formatYen(Math.abs(row.profitLoss))}`
+            : `損失 ${formatYen(Math.abs(row.profitLoss))}`;
+        return `${index + 1}. ${row.pair} ${side} ${formatNumber(row.quantity, 0)}通貨: ${rowProfitLoss}`;
+      })
+      .join("\n");
+
+    return [
+      "為替介入シミュレーター 計算結果",
+      `想定下落率: ${formatNumber(dropRate, 1)}%`,
+      `入金額: ${formatYen(deposit)}`,
+      `合計評価損益: ${profitLossLabel}`,
+      `ポジション総額: ${formatYen(simulation.totalNotional)}`,
+      `必要証拠金の概算: ${formatYen(simulation.requiredMargin)}`,
+      `実効レバレッジ: ${effectiveLeverageText}`,
+      `介入後の参考証拠金維持率: ${marginRatioText}`,
+      `1日あたりの合計スワップ: ${formatYen(simulation.totalDailySwap)}`,
+      `スワップ換算: ${swapDaysText}`,
+      "",
+      "ポジション別:",
+      positionLines || "--",
+      "",
+      "※本結果は概算であり、実際の相場変動や取引条件を保証するものではありません。",
+      "https://fx-intervention-simulator.vercel.app/",
+    ].join("\n");
+  };
+
+  const copyResult = async () => {
+    try {
+      await navigator.clipboard.writeText(buildResultText());
+      setCopyStatus("copied");
+      window.setTimeout(() => setCopyStatus("idle"), 2500);
+    } catch {
+      setCopyStatus("failed");
+      window.setTimeout(() => setCopyStatus("idle"), 3500);
+    }
   };
 
   return (
@@ -495,10 +551,22 @@ export default function FxInterventionSimulator() {
 
           <section className="space-y-5">
             <div className="rounded-lg border border-slate-700 bg-slate-900/80 p-5">
-              <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-                <TrendingUp size={20} className="text-amber-300" />
-                シミュレーション結果
-              </h2>
+              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h2 className="flex items-center gap-2 text-lg font-semibold">
+                  <TrendingUp size={20} className="text-amber-300" />
+                  シミュレーション結果
+                </h2>
+                {hasCalculated ? (
+                  <button
+                    type="button"
+                    onClick={copyResult}
+                    className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-600 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:border-amber-300 hover:text-amber-100"
+                  >
+                    {copyStatus === "copied" ? <Check size={16} /> : <Copy size={16} />}
+                    {copyStatus === "copied" ? "コピーしました" : "計算結果をコピー"}
+                  </button>
+                ) : null}
+              </div>
 
               {!hasCalculated ? (
                   <div className="rounded-lg border border-dashed border-slate-600 p-6 text-sm leading-7 text-slate-200">
@@ -506,6 +574,12 @@ export default function FxInterventionSimulator() {
                 </div>
               ) : (
                 <div className="grid gap-3">
+                  {copyStatus === "failed" ? (
+                    <div className="rounded-lg border border-red-400/40 bg-red-400/10 p-3 text-sm text-red-100">
+                      コピーに失敗しました。ブラウザの権限設定を確認してください。
+                    </div>
+                  ) : null}
+
                   {simulation.invalidCount > 0 ? (
                     <div className="flex gap-2 rounded-lg border border-amber-400/40 bg-amber-400/10 p-3 text-sm text-amber-100">
                       <Info size={18} className="mt-0.5 shrink-0" />
