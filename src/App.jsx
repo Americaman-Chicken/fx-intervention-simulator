@@ -64,10 +64,10 @@ function formatNumber(value, digits = 1) {
 }
 
 function getSeverity(rate) {
-  if (rate < 1) return { label: "軽微", color: "text-emerald-300", bar: "bg-emerald-400" };
-  if (rate < 3) return { label: "中程度", color: "text-amber-300", bar: "bg-amber-400" };
-  if (rate < 5) return { label: "強い", color: "text-orange-300", bar: "bg-orange-400" };
-  return { label: "激甚", color: "text-red-300", bar: "bg-red-400" };
+  if (rate < 1) return { color: "text-emerald-300", bar: "bg-emerald-400" };
+  if (rate < 3) return { color: "text-amber-300", bar: "bg-amber-400" };
+  if (rate < 5) return { color: "text-orange-300", bar: "bg-orange-400" };
+  return { color: "text-red-300", bar: "bg-red-400" };
 }
 
 function ResultMetric({ label, value, tone = "neutral", help }) {
@@ -338,9 +338,9 @@ export default function FxInterventionSimulator() {
         <section className="mb-6 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm text-slate-400">為替介入警戒メーター</p>
+              <p className="text-sm text-slate-400">想定下落率</p>
               <p className={`mt-1 text-2xl font-bold ${severity.color}`}>
-                {formatNumber(dropRate, 1)}% 下落想定 / {severity.label}
+                {formatNumber(dropRate, 1)}%
               </p>
             </div>
             <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800 md:max-w-sm">
