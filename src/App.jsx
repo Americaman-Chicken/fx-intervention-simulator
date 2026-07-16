@@ -608,7 +608,16 @@ export default function FxInterventionSimulator() {
             <div>
               <h3 className="font-semibold text-amber-100">お問い合わせについて</h3>
               <p>
-                お問い合わせ先は現在準備中です。連絡先を設定した後、この欄に掲載します。
+                お問い合わせはXアカウント
+                <a
+                  href="https://x.com/chicken_fx_"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mx-1 text-amber-100 underline-offset-4 hover:underline"
+                >
+                  @chicken_fx_
+                </a>
+                までお願いします。
               </p>
             </div>
           </div>
@@ -618,10 +627,19 @@ export default function FxInterventionSimulator() {
           <h2 className="mb-3 text-lg font-semibold text-white">お問い合わせ</h2>
           <div className="space-y-3 text-sm leading-7 text-slate-200">
             <p>
-              当サイトへのお問い合わせ先は現在準備中です。連絡先を設定した後、この欄に掲載します。
+              当サイトへのお問い合わせは、Xアカウント
+              <a
+                href="https://x.com/chicken_fx_"
+                target="_blank"
+                rel="noreferrer"
+                className="mx-1 text-amber-100 underline-offset-4 hover:underline"
+              >
+                @chicken_fx_
+              </a>
+              までお願いします。
             </p>
             <p>
-              今後、不具合報告、表示内容の修正依頼、広告掲載に関するご連絡を受け付けられるように整備する予定です。
+              不具合報告、表示内容の修正依頼、広告掲載に関するご連絡を受け付けています。
             </p>
             <p className="text-amber-100">
               なお、個別の投資判断、売買タイミング、特定の金融商品の推奨に関するご相談には対応できません。
