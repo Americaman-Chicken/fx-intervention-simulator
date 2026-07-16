@@ -573,8 +573,51 @@ export default function FxInterventionSimulator() {
           </p>
         </section>
 
+        <section id="privacy-policy" className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
+          <h2 className="mb-3 text-lg font-semibold text-white">プライバシーポリシー</h2>
+          <div className="space-y-4 text-sm leading-7 text-slate-200">
+            <p>
+              当サイト「為替介入シミュレーター」は、FXポジションの損益や証拠金維持率を概算するための情報提供ツールです。
+              現時点では、ユーザー登録、ログイン、決済、入力データのサーバー保存は行っていません。
+            </p>
+
+            <div>
+              <h3 className="font-semibold text-amber-100">取得する情報について</h3>
+              <p>
+                当サイトでは、ユーザーが入力した入金額、通貨ペア、価格、数量、スワップポイントなどの情報を、
+                ブラウザ上の計算処理にのみ使用します。これらの入力内容はサーバーへ保存されません。
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-amber-100">アクセス解析・広告配信について</h3>
+              <p>
+                今後、サイト改善や広告収益化のために、Google AdSense、Google Analyticsなどの第三者サービスを利用する場合があります。
+                その際、Cookieを使用してユーザーの閲覧情報が取得されることがあります。
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-amber-100">Cookieについて</h3>
+              <p>
+                Googleなどの第三者配信事業者は、Cookieを使用して、ユーザーが当サイトや他のサイトに過去にアクセスした情報に基づき、
+                広告を配信する場合があります。ユーザーはGoogleの広告設定から、パーソナライズ広告を無効にできます。
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-amber-100">お問い合わせについて</h3>
+              <p>
+                お問い合わせ先は現在準備中です。連絡先を設定した後、この欄に掲載します。
+              </p>
+            </div>
+          </div>
+        </section>
+
         <footer className="mt-8 flex flex-wrap gap-3 border-t border-slate-800 pt-5 text-xs text-slate-300">
-          <span>プライバシーポリシー：準備中</span>
+          <a href="#privacy-policy" className="text-amber-100 underline-offset-4 hover:underline">
+            プライバシーポリシー
+          </a>
           <span>利用規約：準備中</span>
           <span>お問い合わせ：準備中</span>
         </footer>
