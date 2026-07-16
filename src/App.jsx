@@ -37,6 +37,23 @@ const initialPosition = {
   swap: "120",
 };
 
+const sampleCarryHedgePositions = [
+  {
+    pair: "TRY/JPY",
+    side: "long",
+    price: "4.7",
+    quantity: "1000000",
+    swap: "35",
+  },
+  {
+    pair: "USD/JPY",
+    side: "short",
+    price: "155",
+    quantity: "20000",
+    swap: "-250",
+  },
+];
+
 function toFiniteNumber(value) {
   const number = Number(value);
   return Number.isFinite(number) ? number : 0;
@@ -304,6 +321,18 @@ export default function FxInterventionSimulator() {
     ]);
   };
 
+  const applyCarryHedgeSample = () => {
+    setDepositInput("500000");
+    setDropRateInput("2");
+    setPositions(
+      sampleCarryHedgePositions.map((position) => ({
+        ...position,
+        id: crypto.randomUUID(),
+      })),
+    );
+    setHasCalculated(true);
+  };
+
   const removePosition = (id) => {
     setPositions((current) => current.filter((position) => position.id !== id));
   };
@@ -356,6 +385,27 @@ export default function FxInterventionSimulator() {
                 <TrendingDown size={20} className="text-amber-300" />
                 シナリオ入力
               </h2>
+
+              <div className="mb-5 rounded-lg border border-amber-400/30 bg-amber-400/10 p-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-amber-100">入力例</p>
+                    <p className="mt-1 text-xs leading-5 text-slate-200">
+                      TRY/JPY 100万通貨ロング、USD/JPY 2万通貨ショート、入金50万円のサンプルです。
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={applyCarryHedgeSample}
+                    className="inline-flex items-center justify-center rounded-md border border-amber-300 px-3 py-2 text-sm font-semibold text-amber-100 transition hover:bg-amber-300 hover:text-slate-950"
+                  >
+                    この例を入力
+                  </button>
+                </div>
+                <p className="mt-3 text-xs leading-5 text-slate-300">
+                  価格とスワップは説明用の仮値です。実際に使う場合は、利用中のFX会社の数値に直してください。
+                </p>
+              </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="grid gap-2 text-sm sm:col-span-2">
