@@ -82,9 +82,9 @@ function ResultMetric({ label, value, tone = "neutral", help }) {
 
   return (
     <div className="rounded-lg border border-slate-700/80 bg-slate-950/60 p-4">
-      <p className="text-xs text-slate-400">{label}</p>
+      <p className="text-xs text-slate-300">{label}</p>
       <p className={`mt-2 text-xl font-semibold ${tones[tone]}`}>{value}</p>
-      {help ? <p className="mt-2 text-xs leading-5 text-slate-500">{help}</p> : null}
+      {help ? <p className="mt-2 text-xs leading-5 text-amber-100">{help}</p> : null}
     </div>
   );
 }
@@ -94,7 +94,7 @@ function PositionCard({ position, index, canDelete, onChange, onDelete }) {
     <div className="rounded-lg border border-slate-700 bg-slate-950/70 p-4">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <p className="text-xs text-slate-500">ポジション {index + 1}</p>
+          <p className="text-xs text-slate-300">ポジション {index + 1}</p>
           <p className="text-sm font-semibold text-slate-100">{position.pair}</p>
         </div>
         <button
@@ -338,7 +338,7 @@ export default function FxInterventionSimulator() {
         <section className="mb-6 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm text-slate-400">想定下落率</p>
+              <p className="text-sm text-slate-300">想定下落率</p>
               <p className={`mt-1 text-2xl font-bold ${severity.color}`}>
                 {formatNumber(dropRate, 1)}%
               </p>
@@ -451,7 +451,7 @@ export default function FxInterventionSimulator() {
               </h2>
 
               {!hasCalculated ? (
-                <div className="rounded-lg border border-dashed border-slate-700 p-6 text-sm leading-7 text-slate-400">
+                  <div className="rounded-lg border border-dashed border-slate-600 p-6 text-sm leading-7 text-slate-200">
                   条件を入力して「計算する」を押すと、概算結果を表示します。
                 </div>
               ) : (
@@ -516,7 +516,7 @@ export default function FxInterventionSimulator() {
                         {row.profitLoss >= 0 ? "利益" : "損失"} {formatYen(Math.abs(row.profitLoss))}
                       </p>
                     </div>
-                    <dl className="mt-3 grid gap-2 text-sm text-slate-400 sm:grid-cols-2">
+                    <dl className="mt-3 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
                       <div>
                         <dt>介入後予想価格</dt>
                         <dd className="text-slate-200">{formatNumber(row.afterPrice, 3)}</dd>
@@ -531,11 +531,35 @@ export default function FxInterventionSimulator() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-dashed border-slate-700 bg-slate-900/60 p-5 text-center text-sm text-slate-500">
+            <div className="rounded-lg border border-dashed border-slate-600 bg-slate-900/60 p-5 text-center text-sm text-slate-300">
               広告スペース（Ad placeholder）
             </div>
           </section>
         </div>
+
+        <section className="mt-8 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-lg border border-slate-700 bg-slate-900/80 p-5">
+            <h2 className="mb-3 text-lg font-semibold text-white">使い方</h2>
+            <ol className="space-y-2 text-sm leading-7 text-slate-200">
+              <li>1. 入金額を入力します。</li>
+              <li>2. 保有している通貨ペアを選びます。</li>
+              <li>3. ロングまたはショートを選び、現在価格と保有数量を入力します。</li>
+              <li>4. 1万通貨あたりの1日分スワップを入力します。</li>
+              <li>5. 想定下落率を動かして「計算する」を押すと、損益や証拠金維持率の概算を確認できます。</li>
+            </ol>
+          </div>
+
+          <div className="rounded-lg border border-slate-700 bg-slate-900/80 p-5">
+            <h2 className="mb-3 text-lg font-semibold text-white">計算方法</h2>
+            <div className="space-y-3 text-sm leading-7 text-slate-200">
+              <p>介入後価格は「現在価格 ×（1 - 想定下落率 ÷ 100）」で概算します。</p>
+              <p>ロングは下落すると評価損、ショートは下落すると評価益として計算します。</p>
+              <p>必要証拠金は国内個人FXの最大レバレッジ25倍を前提に「ポジション総額 ÷ 25」で概算します。</p>
+              <p>証拠金維持率は「入金額 ÷ 必要証拠金 × 100」を基本に、介入後の評価損益を反映した参考値も表示します。</p>
+              <p>スワップ換算日数は、評価損益が1日分の合計スワップの何日分に相当するかを示す目安です。</p>
+            </div>
+          </div>
+        </section>
 
         <section className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
@@ -549,7 +573,7 @@ export default function FxInterventionSimulator() {
           </p>
         </section>
 
-        <footer className="mt-8 flex flex-wrap gap-3 border-t border-slate-800 pt-5 text-xs text-slate-500">
+        <footer className="mt-8 flex flex-wrap gap-3 border-t border-slate-800 pt-5 text-xs text-slate-300">
           <span>プライバシーポリシー：準備中</span>
           <span>利用規約：準備中</span>
           <span>お問い合わせ：準備中</span>
