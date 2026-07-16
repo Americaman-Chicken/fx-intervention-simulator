@@ -531,8 +531,12 @@ export default function FxInterventionSimulator() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-dashed border-slate-600 bg-slate-900/60 p-5 text-center text-sm text-slate-300">
-              広告スペース（Ad placeholder）
+            <div className="rounded-lg border border-dashed border-slate-600 bg-slate-900/60 p-5 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">広告</p>
+              <p className="mt-2 text-sm text-slate-200">広告掲載予定スペース</p>
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                AdSense承認後に、正式な広告コードへ差し替えます。
+              </p>
             </div>
           </section>
         </div>
