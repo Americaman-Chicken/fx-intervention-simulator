@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fx-intervention-simulator.vercel.app/sitemap.xml
