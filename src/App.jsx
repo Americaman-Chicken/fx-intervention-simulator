@@ -667,6 +667,36 @@ export default function FxInterventionSimulator() {
           </div>
         </section>
 
+        <section id="operator" className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
+          <h2 className="mb-3 text-lg font-semibold text-white">運営者情報</h2>
+          <dl className="grid gap-3 text-sm leading-7 text-slate-200 sm:grid-cols-[140px_1fr]">
+            <dt className="font-semibold text-amber-100">運営者</dt>
+            <dd>chicken_fx_</dd>
+
+            <dt className="font-semibold text-amber-100">お問い合わせ</dt>
+            <dd>
+              Xアカウント
+              <a
+                href="https://x.com/chicken_fx_"
+                target="_blank"
+                rel="noreferrer"
+                className="mx-1 text-amber-100 underline-offset-4 hover:underline"
+              >
+                @chicken_fx_
+              </a>
+            </dd>
+
+            <dt className="font-semibold text-amber-100">サイト内容</dt>
+            <dd>FX・為替介入に関する概算シミュレーションツールの提供</dd>
+
+            <dt className="font-semibold text-amber-100">注意事項</dt>
+            <dd>
+              当サイト運営者は、金融機関、証券会社、投資助言業者ではありません。
+              本サイトの情報は投資判断を代行または推奨するものではありません。
+            </dd>
+          </dl>
+        </section>
+
         <section id="contact" className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
           <h2 className="mb-3 text-lg font-semibold text-white">お問い合わせ</h2>
           <div className="space-y-3 text-sm leading-7 text-slate-200">
@@ -697,6 +727,9 @@ export default function FxInterventionSimulator() {
           </a>
           <a href="#terms" className="text-amber-100 underline-offset-4 hover:underline">
             利用規約
+          </a>
+          <a href="#operator" className="text-amber-100 underline-offset-4 hover:underline">
+            運営者情報
           </a>
           <a href="#contact" className="text-amber-100 underline-offset-4 hover:underline">
             お問い合わせ
