@@ -623,6 +623,50 @@ export default function FxInterventionSimulator() {
           </div>
         </section>
 
+        <section id="terms" className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
+          <h2 className="mb-3 text-lg font-semibold text-white">利用規約</h2>
+          <div className="space-y-4 text-sm leading-7 text-slate-200">
+            <p>
+              本規約は、当サイト「為替介入シミュレーター」の利用条件を定めるものです。
+              ユーザーは、本サイトを利用することで本規約に同意したものとみなします。
+            </p>
+
+            <div>
+              <h3 className="font-semibold text-amber-100">サービスの内容</h3>
+              <p>
+                本サイトは、FXポジションに関する評価損益、スワップ換算日数、レバレッジ、証拠金維持率を概算する無料ツールです。
+                投資助言、売買推奨、将来の相場予測を目的としたものではありません。
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-amber-100">計算結果について</h3>
+              <p>
+                本サイトの計算結果は入力値に基づく概算であり、正確性、完全性、将来の成果を保証するものではありません。
+                実際の取引では、スプレッド、スリッページ、手数料、税金、FX会社ごとのロスカットルールなどにより結果が変わります。
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-amber-100">禁止事項</h3>
+              <p>
+                本サイトへの過度なアクセス、妨害行為、不正利用、第三者に迷惑をかける行為を禁止します。
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-amber-100">変更・停止について</h3>
+              <p>
+                当サイトは、予告なく内容の変更、機能の追加・削除、公開の停止を行う場合があります。
+              </p>
+            </div>
+
+            <p className="text-amber-100">
+              投資判断は必ずご自身の責任で行ってください。
+            </p>
+          </div>
+        </section>
+
         <section id="contact" className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
           <h2 className="mb-3 text-lg font-semibold text-white">お問い合わせ</h2>
           <div className="space-y-3 text-sm leading-7 text-slate-200">
@@ -651,7 +695,9 @@ export default function FxInterventionSimulator() {
           <a href="#privacy-policy" className="text-amber-100 underline-offset-4 hover:underline">
             プライバシーポリシー
           </a>
-          <span>利用規約：準備中</span>
+          <a href="#terms" className="text-amber-100 underline-offset-4 hover:underline">
+            利用規約
+          </a>
           <a href="#contact" className="text-amber-100 underline-offset-4 hover:underline">
             お問い合わせ
           </a>
