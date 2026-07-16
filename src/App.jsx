@@ -614,12 +614,29 @@ export default function FxInterventionSimulator() {
           </div>
         </section>
 
+        <section id="contact" className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
+          <h2 className="mb-3 text-lg font-semibold text-white">お問い合わせ</h2>
+          <div className="space-y-3 text-sm leading-7 text-slate-200">
+            <p>
+              当サイトへのお問い合わせ先は現在準備中です。連絡先を設定した後、この欄に掲載します。
+            </p>
+            <p>
+              今後、不具合報告、表示内容の修正依頼、広告掲載に関するご連絡を受け付けられるように整備する予定です。
+            </p>
+            <p className="text-amber-100">
+              なお、個別の投資判断、売買タイミング、特定の金融商品の推奨に関するご相談には対応できません。
+            </p>
+          </div>
+        </section>
+
         <footer className="mt-8 flex flex-wrap gap-3 border-t border-slate-800 pt-5 text-xs text-slate-300">
           <a href="#privacy-policy" className="text-amber-100 underline-offset-4 hover:underline">
             プライバシーポリシー
           </a>
           <span>利用規約：準備中</span>
-          <span>お問い合わせ：準備中</span>
+          <a href="#contact" className="text-amber-100 underline-offset-4 hover:underline">
+            お問い合わせ
+          </a>
         </footer>
       </div>
     </main>
