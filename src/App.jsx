@@ -565,6 +565,51 @@ export default function FxInterventionSimulator() {
           </div>
         </section>
 
+        <section id="guide" className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
+          <h2 className="mb-4 text-lg font-semibold text-white">為替介入とFXリスクの基礎知識</h2>
+          <div className="grid gap-5 lg:grid-cols-2">
+            <article className="rounded-lg border border-slate-700 bg-slate-950/50 p-4">
+              <h3 className="font-semibold text-amber-100">為替介入とは？</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-200">
+                為替介入とは、急激な為替変動を抑える目的などで、政府や通貨当局が外国為替市場で通貨の売買を行うことです。
+                日本では円安が急速に進んだ場面で、円を買って外貨を売る「円買い介入」が話題になることがあります。
+              </p>
+            </article>
+
+            <article className="rounded-lg border border-slate-700 bg-slate-950/50 p-4">
+              <h3 className="font-semibold text-amber-100">円買い介入でクロス円が下がる理由</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-200">
+                円買い介入では市場で円を買う動きが発生するため、米ドル円やユーロ円などのクロス円が下落する方向に動く可能性があります。
+                ただし、実際の値動きは市場環境、流動性、金利差、投資家心理などにも左右されます。
+              </p>
+            </article>
+
+            <article className="rounded-lg border border-slate-700 bg-slate-950/50 p-4">
+              <h3 className="font-semibold text-amber-100">証拠金維持率とは？</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-200">
+                証拠金維持率は、保有ポジションに対して口座資金にどの程度余裕があるかを見るための目安です。
+                一般的には維持率が低いほどリスクが高まり、相場が不利に動くと追加証拠金やロスカットに近づきます。
+              </p>
+            </article>
+
+            <article className="rounded-lg border border-slate-700 bg-slate-950/50 p-4">
+              <h3 className="font-semibold text-amber-100">ロスカット水準の注意点</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-200">
+                ロスカット水準や必要証拠金の計算方法は、FX会社や口座区分によって異なります。
+                本ツールの表示は国内個人FXの最大レバレッジ25倍を前提にした概算であり、実際のロスカット価格を保証するものではありません。
+              </p>
+            </article>
+
+            <article className="rounded-lg border border-slate-700 bg-slate-950/50 p-4 lg:col-span-2">
+              <h3 className="font-semibold text-amber-100">スワップポイントの注意点</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-200">
+                スワップポイントは通貨ペア、売買方向、FX会社、金利情勢によって変わり、日々見直されることがあります。
+                プラススワップが続くとは限らず、相場変動による評価損がスワップ収益を大きく上回ることもあります。
+              </p>
+            </article>
+          </div>
+        </section>
+
         <section className="mt-8 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
             <ShieldCheck size={20} className="text-emerald-300" />
@@ -731,6 +776,9 @@ export default function FxInterventionSimulator() {
           </a>
           <a href="#terms" className="text-amber-100 underline-offset-4 hover:underline">
             利用規約
+          </a>
+          <a href="#guide" className="text-amber-100 underline-offset-4 hover:underline">
+            基礎知識
           </a>
           <a href="#operator" className="text-amber-100 underline-offset-4 hover:underline">
             運営者情報
