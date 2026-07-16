@@ -327,10 +327,10 @@ export default function FxInterventionSimulator() {
             クロス円FXの概算シミュレーター
           </div>
           <h1 className="text-3xl font-bold tracking-normal text-white sm:text-4xl">
-            為替介入インパクトシミュレーター
+            為替介入シミュレーター
           </h1>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
-            円買い介入などでクロス円が下落した場合の評価損益、スワップ換算日数、
+            FXのクロス円ポジションについて、円買い介入などで為替レートが下落した場合の評価損益、スワップ換算日数、
             実効レバレッジ、証拠金維持率を概算します。結果は投資判断を保証するものではありません。
           </p>
         </header>
