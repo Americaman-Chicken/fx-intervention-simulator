@@ -421,6 +421,43 @@ export default function FxInterventionSimulator() {
         </header>
 
         <section className="mb-6 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
+          <h2 className="mb-3 text-lg font-semibold text-white">このシミュレーターで確認できること</h2>
+          <div className="space-y-3 text-sm leading-7 text-slate-200">
+            <p>
+              為替介入や急な円高が起きると、クロス円のロングポジションは短時間で大きな評価損を抱えることがあります。
+              このページでは、下落率を変えながら、評価損益、必要証拠金、実効レバレッジ、証拠金維持率、スワップ換算日数をまとめて確認できます。
+            </p>
+            <p>
+              TRY/JPYなどの高金利通貨をロングし、USD/JPYなどをショートしている場合のように、複数ポジションを同時に持つケースも入力できます。
+              片方では利益が出ても、もう片方の損失やスワップ支払いで合計結果が変わるため、ポジション全体で見ることが大切です。
+            </p>
+            <p>
+              結果は概算です。実際の取引ではスプレッド、スリッページ、ロスカット水準、スワップの変化、FX会社ごとの必要証拠金ルールも確認してください。
+            </p>
+          </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <div className="rounded-lg border border-slate-700 bg-slate-950/60 p-4">
+              <h3 className="font-semibold text-amber-100">下落率別に損益を見る</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                想定下落率を動かして、介入後の評価損益と証拠金維持率を確認できます。
+              </p>
+            </div>
+            <div className="rounded-lg border border-slate-700 bg-slate-950/60 p-4">
+              <h3 className="font-semibold text-amber-100">複数ポジションに対応</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                ロングとショートを混ぜたポジション全体の損益を概算できます。
+              </p>
+            </div>
+            <div className="rounded-lg border border-slate-700 bg-slate-950/60 p-4">
+              <h3 className="font-semibold text-amber-100">スワップ日数も確認</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                評価損益が日々のスワップ何日分に相当するかを目安として表示します。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-6 rounded-lg border border-slate-700 bg-slate-900/80 p-5">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-sm text-slate-300">想定下落率</p>
@@ -591,7 +628,7 @@ export default function FxInterventionSimulator() {
                     label="合計評価損益"
                     value={`${simulation.totalProfitLoss >= 0 ? "利益 " : "損失 "}${formatYen(Math.abs(simulation.totalProfitLoss))}`}
                     tone={simulation.totalProfitLoss >= 0 ? "profit" : "loss"}
-                    help="日本の金融画面で見かける配色に合わせ、利益は赤、損失は青で表示しています。"
+                    help="入力した下落率をもとにした概算です。利益・損失の方向を確認する目安として見てください。"
                   />
                   <ResultMetric label="ポジション総額" value={formatYen(simulation.totalNotional)} />
                   <ResultMetric label="必要証拠金の概算" value={formatYen(simulation.requiredMargin)} />
@@ -655,13 +692,6 @@ export default function FxInterventionSimulator() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-dashed border-slate-600 bg-slate-900/60 p-5 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">広告</p>
-              <p className="mt-2 text-sm text-slate-200">広告掲載予定スペース</p>
-              <p className="mt-1 text-xs leading-5 text-slate-400">
-                AdSense承認後に、正式な広告コードへ差し替えます。
-              </p>
-            </div>
           </section>
         </div>
 
